@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -10,12 +10,7 @@
       font-family: Arial, sans-serif;
       background: #f4f4f4;
     }
-    header {
-      background-color: #222;
-      color: #fff;
-      padding: 1.5rem;
-      text-align: center;
-    }
+    header { color: black;$1
     nav {
       background: #444;
       display: flex;
@@ -45,6 +40,9 @@
       gap: 2rem;
     }
     .service-box {
+      text-decoration: none;
+      color: inherit;
+      display: block;
       background: white;
       padding: 2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -79,10 +77,49 @@
   <section id="services" class="section">
     <h2>Our Services</h2>
     <div class="services">
-      <div class="service-box">
+      <div class="service-box" onclick="openPopup('exterior')">
         <h3>Exterior Detail</h3>
         <p>Hand wash, wax, tire shine, and paint protection.</p>
       </div>
+      <div class="service-box" onclick="openPopup('interior')">
+        <h3>Interior Detail</h3>
+        <p>Vacuum, shampoo, leather treatment, and odor removal.</p>
+      </div>
+      <div class="service-box" onclick="openPopup('full')">
+        <h3>Full Detail</h3>
+        <p>The complete package: inside and out perfection.</p>
+      </div>
+      <div class="service-box" onclick="openPopup('engine')">
+        <h3>Engine Bay Cleaning</h3>
+        <p>Degreasing and dressing for a showroom-worthy engine.</p>
+      </div>
+    </div>
+
+    <div id="popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6);">
+      <div id="popup-content" style="background:white; margin:10% auto; padding:2rem; width:90%; max-width:500px; border-radius:10px; position:relative;">
+        <span onclick="closePopup()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:1.5rem;">&times;</span>
+        <div id="popup-text"></div>
+        <div style="text-align:center; margin-top:1.5rem;">
+          <a href="#booking" style="display:inline-block; background-color:#222; color:white; padding:0.75rem 1.5rem; text-decoration:none; border-radius:5px; font-weight:bold;">Book This Service</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openPopup(service) {
+        const details = {
+          exterior: '$80 – Includes hand wash, wax, tire shine, and paint protection.',
+          interior: '$100 – Includes vacuum, deep shampoo, leather treatment, and odor removal.',
+          full: '$160 – Our best value: a full exterior and interior detail.',
+          engine: '$50 – Includes full degreasing and engine bay dressing.'
+        };
+        document.getElementById('popup-text').innerHTML = '<h3>' + service.charAt(0).toUpperCase() + service.slice(1) + ' Detail</h3><p>' + details[service] + '</p>';
+        document.getElementById('popup').style.display = 'block';
+      }
+      function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+      }
+    </script>
       <div class="service-box">
         <h3>Interior Detail</h3>
         <p>Vacuum, shampoo, leather treatment, and odor removal.</p>
@@ -98,6 +135,26 @@
     </div>
   </section>
 
+  <section id="pricing" class="section">
+    <h2>Pricing Options</h2>
+    <div id="pricing-exterior">
+      <h3>Exterior Detail</h3>
+      <p>$80 – Includes hand wash, wax, tire shine, and paint protection.</p>
+    </div>
+    <div id="pricing-interior">
+      <h3>Interior Detail</h3>
+      <p>$100 – Includes vacuum, deep shampoo, leather treatment, and odor removal.</p>
+    </div>
+    <div id="pricing-full">
+      <h3>Full Detail</h3>
+      <p>$160 – Our best value: a full exterior and interior detail.</p>
+    </div>
+    <div id="pricing-engine">
+      <h3>Engine Bay Cleaning</h3>
+      <p>$50 – Includes full degreasing and engine bay dressing.</p>
+    </div>
+  </section>
+
   <section id="about" class="section">
     <h2>About Us</h2>
     <p>Sahin Detailing is a locally owned and operated mobile detailing company with a passion for perfection. We come to you—at home or at work—to make your vehicle look and feel brand new. With eco-friendly products and a dedication to customer satisfaction, we guarantee a detailing experience you’ll love.</p>
@@ -105,9 +162,9 @@
 
   <section id="contact" class="section">
     <h2>Contact Us</h2>
-    <p>Email: info@sahindetailing.com</p>
-    <p>Phone: (555) 123-4567</p>
-    <p>Service Area: Greater [Your City] Area</p>
+    <p>Email: theligitoof@gmail.com</p>
+    <p>Phone: (408)-648-6382</p>
+    <p>Service Area: Within San Jose, Monterey, Gilroy. </p>
   </section>
 
   <section id="booking" class="section">
