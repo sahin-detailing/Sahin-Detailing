@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sahin Detailing | Premium Car Detailing</title>
   <style>
+    #tabs > section { display: none; }
+    #tabs > section.visible { display: block; }
+
     #nav-tabs button {
       background: #555;
       border: none;
@@ -194,12 +197,15 @@
     }
 
     function showTab(tabId, btn) {
-      const sections = document.querySelectorAll('#tabs > section');
-      sections.forEach(sec => {
-        sec.style.opacity = 0;
-        setTimeout(() => {
-          sec.style.display = 'none';
-        }, 300);
+  const sections = document.querySelectorAll('#tabs > section');
+  sections.forEach(sec => sec.classList.remove('visible'));
+  const active = document.getElementById(tabId);
+  if (active) active.classList.add('visible');
+
+  const buttons = document.querySelectorAll('#nav-tabs button');
+  buttons.forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}, 300);
       });
       const active = document.getElementById(tabId);
       setTimeout(() => {
@@ -215,12 +221,10 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('#tabs > section');
-      sections.forEach(sec => {
-        sec.style.transition = 'opacity 0.3s ease';
-        sec.style.opacity = 0;
-        sec.style.display = 'none';
-      });
+  const firstBtn = document.querySelector('#nav-tabs button');
+  firstBtn.classList.add('active');
+  showTab('home', firstBtn);
+});
       const firstBtn = document.querySelector('#nav-tabs button');
       firstBtn.classList.add('active');
       showTab('home', firstBtn);
