@@ -182,54 +182,38 @@
   </div>
 
   <script>
-    function openPopup(service) {
-      const details = {
-        exterior: '$80 – Includes hand wash, wax, tire shine, and paint protection.',
-        interior: '$100 – Includes vacuum, deep shampoo, leather treatment, and odor removal.',
-        full: '$160 – Our best value: a full exterior and interior detail.',
-        engine: '$50 – Includes full degreasing and engine bay dressing.'
-      };
-      document.getElementById('popup-text').innerHTML = '<h3>' + service.charAt(0).toUpperCase() + service.slice(1) + ' Detail</h3><p>' + details[service] + '</p>';
-      document.getElementById('popup').style.display = 'block';
-    }
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
-    }
+  function openPopup(service) {
+    const details = {
+      exterior: '$80 – Includes hand wash, wax, tire shine, and paint protection.',
+      interior: '$100 – Includes vacuum, deep shampoo, leather treatment, and odor removal.',
+      full: '$160 – Our best value: a full exterior and interior detail.',
+      engine: '$50 – Includes full degreasing and engine bay dressing.'
+    };
+    document.getElementById('popup-text').innerHTML = '<h3>' + service.charAt(0).toUpperCase() + service.slice(1) + ' Detail</h3><p>' + details[service] + '</p>';
+    document.getElementById('popup').style.display = 'block';
+  }
 
-    function showTab(tabId, btn) {
-  const sections = document.querySelectorAll('#tabs > section');
-  sections.forEach(sec => sec.classList.remove('visible'));
-  const active = document.getElementById(tabId);
-  if (active) active.classList.add('visible');
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
 
-  const buttons = document.querySelectorAll('#nav-tabs button');
-  buttons.forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-}, 300);
-      });
-      const active = document.getElementById(tabId);
-      setTimeout(() => {
-        active.style.display = 'block';
-        setTimeout(() => {
-          active.style.opacity = 1;
-        }, 10);
-      }, 300);
+  function showTab(tabId, btn) {
+    const sections = document.querySelectorAll('#tabs > section');
+    sections.forEach(sec => sec.style.display = 'none');
+    const active = document.getElementById(tabId);
+    if (active) active.style.display = 'block';
 
-      const buttons = document.querySelectorAll('#nav-tabs button');
-      buttons.forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-    }
+    const buttons = document.querySelectorAll('#nav-tabs button');
+    buttons.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  }
 
-    document.addEventListener('DOMContentLoaded', () => {
-  const firstBtn = document.querySelector('#nav-tabs button');
-  firstBtn.classList.add('active');
-  showTab('home', firstBtn);
-});
-      const firstBtn = document.querySelector('#nav-tabs button');
-      firstBtn.classList.add('active');
-      showTab('home', firstBtn);
-    });
-  </script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const firstBtn = document.querySelector('#nav-tabs button');
+    firstBtn.classList.add('active');
+    showTab('home', firstBtn);
+  });
+</script>
 
   <footer>
     <p>&copy; 2025 Sahin Detailing. All rights reserved.</p>
